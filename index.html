@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Architect | Portfolio 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;900&family=JetBrains+Mono&display=swap');
+
+        :root {
+            --bg: #010103;
+            --accent: #00f2ff;
+            --secondary: #7000ff;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: blur(1px) contrast(1.2);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 15vw, 8rem);
+            font-weight: 900;
+            letter-spacing: -5px;
+            background: linear-gradient(to bottom, #fff 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- CONTENT SECTION --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* --- BIO DIV --- */
+        .bio-box {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            padding: 60px;
+            border-radius: 40px;
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bio-box h2 { font-size: 2.5rem; line-height: 1.1; }
+        .bio-box p { color: #aaa; font-size: 1.1rem; }
+
+        /* --- SKILLS GRID --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            margin: 4px;
+            color: #eee;
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px;
+            opacity: 0.3;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .bio-box { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="fluidCanvas"></canvas>
+
+    <section class="hero">
+        <h1 onmouseover="perturb(100)" onmouseleave="perturb(5)">BIKASH BARIK</h1>
+        <p style="letter-spacing: 10px; color: #555;">AI RESEARCH & SYSTEMS ARCHITECTURE</p>
+    </section>
+
+    <div class="container">
+        
+        <div class="bio-box">
+            <h2>Merging<br>Logic with<br>Matter.</h2>
+            <div>
+                <p>
+                    I am a Neural Systems Architect dedicated to the convergence of Scientific Machine Learning (SciML) and generative dynamics. My work focuses on building models that don't just mimic patterns, but respect the underlying physics of the universe.
+                </p>
+                <div style="margin-top: 20px;">
+                    <span class="skill-tag">PhD Research</span>
+                    <span class="skill-tag">Open Source Contributor</span>
+                    <span class="skill-tag">Burla, 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Technical Expertise</h2>
+
+        <div class="skills-grid">
+            <div class="skill-card" onmouseover="perturb(30)" onmouseleave="perturb(5)">
+                <h3>Neural Architectures</h3>
+                <p>Designing Transformer-based foundation models with custom attention heads and sparse-MoE routing.</p>
+                <div style="margin-top: 15px;">
+                    <span class="skill-tag">PyTorch</span> <span class="skill-tag">JAX</span> <span class="skill-tag">CUDA</span>
+                </div>
+            </div>
+
+            <div class="skill-card" onmouseover="perturb(30)" onmouseleave="perturb(5)">
+                <h3>Physics-Informed AI</h3>
+                <p>Solving complex PDEs for fluid dynamics and structural mechanics using PINNs and Operator Learning.</p>
+                <div style="margin-top: 15px;">
+                    <span class="skill-tag">DeepXDE</span> <span class="skill-tag">Nvidia Modulus</span>
+                </div>
+            </div>
+
+            <div class="skill-card" onmouseover="perturb(30)" onmouseleave="perturb(5)">
+                <h3>Generative Systems</h3>
+                <p>Latent Diffusion and NeRF modeling for hyper-realistic 3D reconstruction and synthetic data generation.</p>
+                <div style="margin-top: 15px;">
+                    <span class="skill-tag">Stable Diffusion</span> <span class="skill-tag">ControlNet</span>
+                </div>
+            </div>
+
+            <div class="skill-card" onmouseover="perturb(30)" onmouseleave="perturb(5)">
+                <h3>Distributed Training</h3>
+                <p>Scaling billion-parameter models across multi-node GPU clusters using DeepSpeed and FSDP.</p>
+                <div style="margin-top: 15px;">
+                    <span class="skill-tag">Slurm</span> <span class="skill-tag">Kubernetes</span> <span class="skill-tag">HuggingFace</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 NEURAL SYSTEMS ARCHITECT. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('fluidCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, points = [];
+        let mouse = { x: -1000, y: -1000 };
+        let waveIntensity = 5;
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            points = [];
+            const spacing = 40;
+            for(let y = 0; y <= height; y += spacing) {
+                for(let x = 0; x <= width; x += spacing) {
+                    points.push({
+                        bx: x, by: y, x: x, y: y,
+                        phase: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+        }
+
+        window.perturb = (val) => waveIntensity = val;
+
+        function animate() {
+            ctx.fillStyle = 'rgba(1, 1, 3, 0.2)';
+            ctx.fillRect(0, 0, width, height);
+            const time = Date.now() * 0.002;
+
+            points.forEach(p => {
+                const dist = Math.sqrt((mouse.x - p.bx)**2 + (mouse.y - p.by)**2);
+                const mInfluence = Math.max(0, (250 - dist) / 250);
+                
+                p.y = p.by + Math.sin(p.phase + time) * waveIntensity + (mInfluence * 50);
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 242, 255, ${0.1 + mInfluence})`;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
+</body>
+</html>
